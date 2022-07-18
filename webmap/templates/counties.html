@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+  
+
+  <div class="col1">
+  
+    {% autoescape off %}
+     {{ plot_div }}
+  {% endautoescape %}
+
+  </div>
+
+  <div class="col3">
+ 
+  <h4> {{title}} </h4>
+  
+  </div>
+  
+  <div class="col2">
+    <div>
+        <a href={% url 'home'%} class="btn btn-outline-success" role="button" aria-pressed="true">National</a>
+        <a href={% url 'start'%} class="btn btn-outline-primary" role="button" aria-pressed="true">Counties</a>
+      {%load crispy_forms_tags %} 
+
+    <form action="" method="post">
+      {% csrf_token %}
+
+     <div>
+      {{ form|crispy }}
+     </div>
+
+      <input type="submit" value="Filter">
+    </form>
+    </div>
+  </div>
+
+</div>
+<style>
+  .col2{
+    position: absolute;
+    width: 10vw;
+    height: 70vh;
+    left: 80%;
+    top: 10%;
+  }
+  .col1{
+    position: absolute;
+    width: 40vw;
+    height: 40vh;
+    left: 0%;
+    top: 20%;
+  }
+ 
+  .col3{
+    position: absolute;
+    top: 10%;
+    left: 12%;
+    width: 50vw;
+    height:10vh;
+  }
+</style>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+{% endblock %}
